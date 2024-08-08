@@ -17,7 +17,7 @@ In contrast, for a **Cross-Encoder**,  we pass both sentences simultaneously to 
 
 A **Cross-Encoder does not produce a sentence embedding**. Also, we are not able to pass individual sentences to a Cross-Encoder.
 
-As detailed in our [paper](https://arxiv.org/abs/1908.10084), Cross-Encoder achieve better performances than Bi-Encoders. However, for many application they are not practical as they do not produce embeddings we could e.g. index or efficiently compare using cosine similarity.
+As detailed in [paper](https://arxiv.org/abs/1908.10084), Cross-Encoder achieve better performances than Bi-Encoders. However, for many application they are not practical as they do not produce embeddings we could e.g. index or efficiently compare using cosine similarity.
 
 
 ## When to use Cross- / Bi-Encoders?
@@ -39,10 +39,6 @@ scores = model.predict([["My first", "sentence pair"], ["Second text", "pair"]])
 
 You pass to `model.predict` a list of sentence **pairs**. Note, Cross-Encoder do not work on individual sentence, you have to pass sentence pairs.
 
-As model name, you can pass any model or path that is compatible with Huggingface [AutoModel](https://huggingface.co/transformers/model_doc/auto.html) class
-
-
-For a full example, to score a query with all possible sentences in a corpus see [cross-encoder_usage.py](cross-encoder_usage.py).
 
 
 
@@ -51,7 +47,6 @@ For a full example, to score a query with all possible sentences in a corpus see
 ## Combining Bi- and Cross-Encoders
 Cross-Encoder achieve higher performance than Bi-Encoders, however, they do not scale well for large datasets. Here, it can make sense to combine Cross- and Bi-Encoders, for example in Information Retrieval / Semantic Search scenarios: First, you use an efficient Bi-Encoder to retrieve e.g. the top-100 most similar sentences for a query. Then, you use a Cross-Encoder to re-rank these 100 hits by computing the score for every (query, hit) combination.
 
-For more details on combing Bi- and Cross-Encoders, see [Application - Information Retrieval](../retrieve_rerank/README.md).
 
-## Training Cross-Encoders 
-See [Cross-Encoder Training](../../training/cross-encoder/README.md) how to train your own Cross-Encoder models.
+
+
